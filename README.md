@@ -1,5 +1,30 @@
 # QUEEN: QUantized Efficient ENcoding of Dynamic Gaussians for Streaming Free-viewpoint Videos
 
+> Personal research fork of [NVlabs/queen](https://github.com/NVlabs/queen). The upstream training and rendering workflow is preserved; this fork currently adds a local pygame-based interactive viewer for inspecting trained dynamic Gaussian scenes.
+
+## Fork Addition: Interactive Viewer
+
+`interactive_viewer.py` provides keyboard and mouse free-viewpoint playback for a trained QUEEN model. It reuses QUEEN's CUDA renderer and requires a CUDA-capable GPU.
+
+Install pygame alongside the upstream dependencies:
+
+```bash
+pip install pygame
+```
+
+Launch it with a local dataset and trained model directory:
+
+```bash
+python interactive_viewer.py \
+  --config configs/dynerf.yaml \
+  -s <dataset-path> \
+  -m <trained-model-path>
+```
+
+Controls: `WASD` to move, mouse drag to look, `Space` or `P` to play/pause, arrow keys to step frames, `R` to reset the camera, and `Esc` to quit.
+
+---
+
 **QUEEN** (**QU**antized **E**fficient **EN**coding) is a novel framework for efficient, streamable free-viewpoint video (FVV) representation using dynamic 3D Gaussians. QUEEN enables high-quality dynamic scene capture, drastically reduces model size (to just 0.7 MB per frame), trains in under 5 seconds per frame, and achieves real-time rendering at ~350 FPS.
 
 This repository contains the official implementation for QUEEN, as introduced in the NeurIPS 2024 paper:
